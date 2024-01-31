@@ -50,6 +50,19 @@ void Player::Reset()
     area.y = originalHeight;
 }
 
+void Player::EvaluateCollision(Obstacle *obstacle)
+{
+    if (lastFramePosition.y + height <= obstacle->GetPosition().y)
+    {
+        std::cout << "Cae encimaaaa: " << obstacle->GetPosition().y << "\n";
+        position.y = obstacle->GetPosition().y - height;
+        area.y = position.y;
+        velocity.y = 0;
+        return;
+    }
+    Die();
+}
+
 void Player::Die()
 {
     alive = false;
@@ -61,6 +74,7 @@ void Player::Update(float deltaTime)
     {
         return;
     }
+    lastFramePosition = position;
 
     if (IsKeyPressed(KEY_SPACE))
     {

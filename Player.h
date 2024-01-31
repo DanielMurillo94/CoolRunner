@@ -1,7 +1,9 @@
 #ifndef PLAYER_H
 #define PLAYER_H
+
 #include "raylib.h"
 #include "BaseObject.h"
+#include "Obstacle.h"
 
 class Player : public BaseObject
 {
@@ -18,6 +20,8 @@ private:
     float originalHeight{};
     float highestHeight{1500};
 
+    Vector2 lastFramePosition{};
+
     bool alive{true};
 
     void FallFaster();
@@ -28,6 +32,7 @@ public:
     Player(Vector2 _position, float _jumpHeight, float _jumpTime, int _groundLevel);
     virtual void Update(float deltaTime);
     void Die();
+    void EvaluateCollision(Obstacle *obstacle);
 };
 
 #endif

@@ -35,12 +35,12 @@ void ObstacleManager::TickTimer(float deltaTime)
 
 void ObstacleManager::Update(float deltaTime)
 {
-    for (std::list<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
+    for (std::list<Obstacle>::iterator obstacle = obstacles.begin(); obstacle != obstacles.end(); obstacle++)
     {
-        it->Update(deltaTime);
-        if (CheckCollisionRecs(it->GetArea(), player->GetArea()))
+        obstacle->Update(deltaTime);
+        if (CheckCollisionRecs(obstacle->GetArea(), player->GetArea()))
         {
-            player->Die();
+            player->EvaluateCollision(&(*obstacle));
         }
     }
     TickTimer(deltaTime);

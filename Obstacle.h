@@ -1,3 +1,6 @@
+#ifndef OBSTACLE_H
+#define OBSTACLE_H
+
 #include "raylib.h"
 #include "BaseObject.h"
 
@@ -10,3 +13,5 @@ public:
     Obstacle(Vector2 _position, float _width, float _height);
     virtual void Update(float deltaTime);
 };
+
+#endif
