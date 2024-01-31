@@ -2,8 +2,9 @@
 #include "raylib.h"
 #include <iostream>
 
-ObstacleManager::ObstacleManager(int groundLevel, int windowWidth) : groundLevel(groundLevel),
-                                                                     windowWidth(windowWidth)
+ObstacleManager::ObstacleManager(int groundLevel, int windowWidth, Player *player) : groundLevel(groundLevel),
+                                                                                     windowWidth(windowWidth),
+                                                                                     player(player)
 {
 
     std::cout << "Initializng obstacle manager with window width: " << windowWidth << "\n";
@@ -37,6 +38,10 @@ void ObstacleManager::Update(float deltaTime)
     for (std::list<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
     {
         it->Update(deltaTime);
+        if (CheckCollisionRecs(it->GetArea(), player->GetArea()))
+        {
+            player->Die();
+        }
     }
     TickTimer(deltaTime);
     PopOffscreenObstacle();

@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
     int groundLevel{450};
 
     Player player{Vector2{200, 400}, 350.f, 0.7f, groundLevel};
-    ObstacleManager obstacles{groundLevel, windowWidth};
+    ObstacleManager obstacles{groundLevel, windowWidth, &player};
 
     InitWindow(windowWidth, windowHeight, "Runner");
     SetTargetFPS(60);

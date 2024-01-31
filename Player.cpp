@@ -11,7 +11,8 @@ Player::Player(Vector2 _position, float _jumpHeight, float _jumpTime, int _groun
                                                                                           highJumpGravity((2.0f * _jumpHeight / (_jumpTime * _jumpTime))),
                                                                                           lowJumpGravity(highJumpGravity * 3),
                                                                                           currentGravity(highJumpGravity),
-                                                                                          isInGround(true)
+                                                                                          isInGround(true),
+                                                                                          alive(true)
 {
     width = 100.f;
     height = 100.f;
@@ -49,8 +50,17 @@ void Player::Reset()
     area.y = originalHeight;
 }
 
+void Player::Die()
+{
+    alive = false;
+}
+
 void Player::Update(float deltaTime)
 {
+    if (!alive)
+    {
+        return;
+    }
 
     if (IsKeyPressed(KEY_SPACE))
     {
