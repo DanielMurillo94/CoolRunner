@@ -15,8 +15,9 @@ protected:
 public:
     BaseObject();
     BaseObject(Vector2 _position, float _width, float _height);
-    virtual void Update(float deltaTime);
     Vector2 GetPosition() { return position; }
     Rectangle GetArea() { return area; }
+    virtual void Update(float deltaTime);
+    virtual void Draw() = 0;
 };
 #endif

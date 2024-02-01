@@ -12,6 +12,7 @@ private:
 public:
     Obstacle(Vector2 _position, float _width, float _height);
     virtual void Update(float deltaTime);
+    virtual void Draw();
 };
 
 #endif

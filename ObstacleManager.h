@@ -21,4 +21,5 @@ public:
     void SpawnObstacle();
     void PopOffscreenObstacle();
     void Update(float deltaTime);
+    void Draw();
 };

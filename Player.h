@@ -31,6 +31,7 @@ private:
 public:
     Player(Vector2 _position, float _jumpHeight, float _jumpTime, int _groundLevel);
     virtual void Update(float deltaTime);
+    virtual void Draw();
     void Die();
     void EvaluateCollision(Obstacle *obstacle);
 };

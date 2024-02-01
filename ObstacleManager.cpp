@@ -46,3 +46,11 @@ void ObstacleManager::Update(float deltaTime)
     TickTimer(deltaTime);
     PopOffscreenObstacle();
 }
+
+void ObstacleManager::Draw()
+{
+    for (std::list<Obstacle>::iterator obstacle = obstacles.begin(); obstacle != obstacles.end(); obstacle++)
+    {
+        obstacle->Draw();
+    }
+}

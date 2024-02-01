@@ -24,6 +24,9 @@ int main(int argc, char const *argv[])
         player.Update(deltaTime);
         obstacles.Update(deltaTime);
 
+        player.Draw();
+        obstacles.Draw();
+
         EndDrawing();
     }
     return 0;

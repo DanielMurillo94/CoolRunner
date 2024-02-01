@@ -11,5 +11,9 @@ Obstacle::Obstacle(Vector2 _position, float _width, float _height) : BaseObject:
 void Obstacle::Update(float deltaTime)
 {
     BaseObject::Update(deltaTime);
-    DrawRectangle(position.x, position.y, 100, 100, BLUE);
 };
+
+void Obstacle::Draw()
+{
+    DrawRectangle(position.x, position.y, 100, 100, BLUE);
+}

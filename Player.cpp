@@ -54,7 +54,6 @@ void Player::EvaluateCollision(Obstacle *obstacle)
 {
     if (lastFramePosition.y + height <= obstacle->GetPosition().y)
     {
-        std::cout << "Cae encimaaaa: " << obstacle->GetPosition().y << "\n";
         position.y = obstacle->GetPosition().y - height;
         area.y = position.y;
         velocity.y = 0;
@@ -96,7 +95,14 @@ void Player::Update(float deltaTime)
     {
         Reset();
     }
+}
 
+void Player::Draw()
+{
+    if (!alive)
+    {
+        return;
+    }
     DrawRectangle(area.x, area.y, area.width, area.height, RED);
     for (int i = originalHeight; i > 0; i -= 100)
     {
