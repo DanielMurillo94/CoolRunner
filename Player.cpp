@@ -26,10 +26,12 @@ Player::Player(Vector2 _position, float _jumpHeight, float _jumpTime, int _groun
 
 void Player::Jump()
 {
-    if (isInGround)
+    if (canJump)
     {
+        currentGravity = highJumpGravity;
         velocity.y = jumpForce;
         isInGround = false;
+        canJump = false;
     }
 }
 
@@ -45,18 +47,24 @@ void Player::Reset()
 {
     position.y = originalHeight;
     isInGround = true;
+    canJump = true;
     velocity.y = 0;
-    currentGravity = highJumpGravity;
     area.y = originalHeight;
+}
+
+void Player::LandOnObstacle(float height)
+{
+    position.y = height;
+    canJump = true;
+    area.y = position.y;
+    velocity.y = 0;
 }
 
 void Player::EvaluateCollision(Obstacle *obstacle)
 {
     if (lastFramePosition.y + height <= obstacle->GetPosition().y)
     {
-        position.y = obstacle->GetPosition().y - height;
-        area.y = position.y;
-        velocity.y = 0;
+        LandOnObstacle(obstacle->GetPosition().y - height);
         return;
     }
     Die();

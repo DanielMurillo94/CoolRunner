@@ -17,6 +17,7 @@ private:
     float currentGravity{};
 
     bool isInGround{true};
+    bool canJump{false};
     float originalHeight{};
     float highestHeight{1500};
 
@@ -27,6 +28,7 @@ private:
     void FallFaster();
     void Jump();
     void Reset();
+    void LandOnObstacle(float height);
 
 public:
     Player(Vector2 _position, float _jumpHeight, float _jumpTime, int _groundLevel);
