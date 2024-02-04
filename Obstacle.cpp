@@ -15,5 +15,5 @@ void Obstacle::Update(float deltaTime)
 
 void Obstacle::Draw()
 {
-    DrawRectangle(position.x, position.y, 100, 100, BLUE);
+    DrawRectangle(position.x, position.y, width, height, BLUE);
 }

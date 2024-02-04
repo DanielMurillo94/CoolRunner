@@ -3,6 +3,12 @@
 #include "Obstacle.h"
 #include "Player.h"
 
+struct ObstacleDimensions
+{
+    float height;
+    float width;
+};
+
 class ObstacleManager
 {
 private:
@@ -13,6 +19,8 @@ private:
     float timer{};
     float spawnTimeThreshold{4};
     Player *player;
+    ObstacleDimensions obstacleTypes[2]{{100, 100}, {200, 100}};
+    int sizeOfObstacleTypes{};
 
     void TickTimer(float deltaTime);
 

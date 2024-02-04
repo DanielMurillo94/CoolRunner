@@ -8,11 +8,15 @@ ObstacleManager::ObstacleManager(int groundLevel, int windowWidth, Player *playe
 {
 
     std::cout << "Initializng obstacle manager with window width: " << windowWidth << "\n";
+    sizeOfObstacleTypes = sizeof(obstacleTypes) / sizeof(obstacleTypes[0]);
+    std::cout << "Length of obstacle types: " << sizeOfObstacleTypes << "\n";
 }
 
 void ObstacleManager::SpawnObstacle()
 {
-    obstacles.push_back(Obstacle{Vector2{static_cast<float>(windowWidth), static_cast<float>(groundLevel - 100)}, 100.f, 100.f});
+    int index = rand() % sizeOfObstacleTypes;
+    ObstacleDimensions obstacleToSpawn = obstacleTypes[index];
+    obstacles.push_back(Obstacle{Vector2{static_cast<float>(windowWidth), static_cast<float>(groundLevel - obstacleToSpawn.height)}, obstacleToSpawn.width, obstacleToSpawn.height});
 }
 
 void ObstacleManager::PopOffscreenObstacle()
