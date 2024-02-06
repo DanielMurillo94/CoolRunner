@@ -16,11 +16,14 @@ private:
     float spawnRythm{10};
     std::list<Obstacle> obstacles{};
     int windowWidth{};
-    float timer{};
-    float spawnTimeThreshold{4};
     Player *player;
     ObstacleDimensions obstacleTypes[2]{{100, 100}, {200, 100}};
     int sizeOfObstacleTypes{};
+
+    float timer{};
+    float spawnTimeThreshold{5};
+    float minSpawnTime{2.7f};
+    float maxSpawnTime{16.f};
 
     void TickTimer(float deltaTime);
 
@@ -30,4 +33,5 @@ public:
     void PopOffscreenObstacle();
     void Update(float deltaTime);
     void Draw();
+    float RandomFloat(float min, float max);
 };

@@ -27,6 +27,14 @@ void ObstacleManager::PopOffscreenObstacle()
     }
 }
 
+float ObstacleManager::RandomFloat(float min, float max)
+{
+    float random = ((float)rand()) / (float)RAND_MAX;
+    float diff = max - min;
+    float r = random * diff;
+    return min + r;
+}
+
 void ObstacleManager::TickTimer(float deltaTime)
 {
     timer += deltaTime;
@@ -34,6 +42,8 @@ void ObstacleManager::TickTimer(float deltaTime)
     {
         SpawnObstacle();
         timer = 0.f;
+        spawnTimeThreshold = RandomFloat(minSpawnTime, maxSpawnTime);
+        std::cout << "New spawn Threshold: " << spawnTimeThreshold << "\n";
     }
 }
 
