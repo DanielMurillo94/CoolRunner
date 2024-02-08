@@ -20,10 +20,15 @@ private:
     ObstacleDimensions obstacleTypes[2]{{100, 100}, {200, 100}};
     int sizeOfObstacleTypes{};
 
-    float timer{};
+    float spawnTimer{};
     float spawnTimeThreshold{5};
     float minSpawnTime{2.7f};
     float maxSpawnTime{16.f};
+
+    float speedTimer{};
+    float speedTimeThreshold{5.f};
+    float speedMultiplier{1.1f};
+    float currentSpeed{10}; // Pixels per second
 
     void TickTimer(float deltaTime);
 

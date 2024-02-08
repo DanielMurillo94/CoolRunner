@@ -16,7 +16,7 @@ void ObstacleManager::SpawnObstacle()
 {
     int index = rand() % sizeOfObstacleTypes;
     ObstacleDimensions obstacleToSpawn = obstacleTypes[index];
-    obstacles.push_back(Obstacle{Vector2{static_cast<float>(windowWidth), static_cast<float>(groundLevel - obstacleToSpawn.height)}, obstacleToSpawn.width, obstacleToSpawn.height});
+    obstacles.push_back(Obstacle{Vector2{static_cast<float>(windowWidth), static_cast<float>(groundLevel - obstacleToSpawn.height)}, obstacleToSpawn.width, obstacleToSpawn.height, currentSpeed});
 }
 
 void ObstacleManager::PopOffscreenObstacle()
@@ -37,13 +37,20 @@ float ObstacleManager::RandomFloat(float min, float max)
 
 void ObstacleManager::TickTimer(float deltaTime)
 {
-    timer += deltaTime;
-    if (timer >= spawnTimeThreshold)
+    spawnTimer += deltaTime;
+    if (spawnTimer >= spawnTimeThreshold)
     {
         SpawnObstacle();
-        timer = 0.f;
+        spawnTimer = 0.f;
         spawnTimeThreshold = RandomFloat(minSpawnTime, maxSpawnTime);
         std::cout << "New spawn Threshold: " << spawnTimeThreshold << "\n";
+    }
+    speedTimer += deltaTime;
+    if (speedTimer >= speedTimeThreshold)
+    {
+        currentSpeed = currentSpeed * speedMultiplier;
+        speedTimer = 0.f;
+        std::cout << "New speed: " << currentSpeed << "\n";
     }
 }
 

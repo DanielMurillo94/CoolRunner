@@ -10,7 +10,7 @@ private:
     Vector2 firstPosition{};
 
 public:
-    Obstacle(Vector2 _position, float _width, float _height);
+    Obstacle(Vector2 _position, float _width, float _height, float speed);
     virtual void Update(float deltaTime);
     virtual void Draw();
 };

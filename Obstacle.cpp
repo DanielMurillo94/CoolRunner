@@ -3,9 +3,9 @@
 #include "BaseObject.h"
 #include <iostream>
 
-Obstacle::Obstacle(Vector2 _position, float _width, float _height) : BaseObject::BaseObject(_position, _width, _height)
+Obstacle::Obstacle(Vector2 _position, float _width, float _height, float speed) : BaseObject::BaseObject(_position, _width, _height)
 {
-    velocity = Vector2{-80.f, 0.f};
+    velocity = Vector2{-speed, 0.f};
 };
 
 void Obstacle::Update(float deltaTime)
