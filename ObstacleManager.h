@@ -19,18 +19,21 @@ private:
     Player *player;
     ObstacleDimensions obstacleTypes[2]{{100, 100}, {200, 100}};
     int sizeOfObstacleTypes{};
+    bool canSpawn{true};
 
     float spawnTimer{};
     float spawnTimeThreshold{5};
-    float minSpawnTime{2.7f};
-    float maxSpawnTime{16.f};
 
     float speedTimer{};
-    float speedTimeThreshold{5.f};
-    float speedMultiplier{1.1f};
-    float currentSpeed{10}; // Pixels per second
+    float speedTimeThreshold{20.f};
+    float speedMultiplier{1.5f};
+    float currentSpeed{70}; // Pixels per second
+
+    float haltTimer{};
+    float haltTimeThreshold{3.f};
 
     void TickTimer(float deltaTime);
+    void HaltSpawns(float deltaTime);
 
 public:
     ObstacleManager(int groundLevel, int windowWidth, Player *player);

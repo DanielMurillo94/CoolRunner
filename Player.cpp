@@ -117,14 +117,3 @@ void Player::Draw()
         DrawLine(0, i, 1000, i, BLACK);
     }
 }
-
-// if (position.y < highestHeight)
-// {
-//     highestHeight = position.y;
-//     std::string heightText{"Height: "};
-//     printf(heightText.append(std::to_string(highestHeight)).c_str());
-//     std::cout << "Jump to Y pixel: " << jumpHeight << "  GroundHeight: " << originalHeight << "\n";
-//     std::cout << "JumpForce: " << jumpForce << "  jumpTime: " << jumpTime << "\n";
-//     std::cout << "Gravity: " << currentGravity << "\n";
-//     std::cout << "Jump Height: " << originalHeight - highestHeight << "\n";
-// }
