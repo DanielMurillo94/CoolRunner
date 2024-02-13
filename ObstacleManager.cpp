@@ -57,9 +57,18 @@ void ObstacleManager::TickTimer(float deltaTime)
     speedTimer += deltaTime;
     if (speedTimer >= speedTimeThreshold)
     {
+        speedMultiplier = 1.5f;
+        if (currentSpeed > 350.f)
+        {
+            speedMultiplier = 1.3f;
+        }
+        if (currentSpeed > 500.f)
+        {
+            speedMultiplier = 1.1f;
+        }
         currentSpeed = currentSpeed * speedMultiplier;
         speedTimer = 0.f;
-        std::cout << "New speed: " << currentSpeed << "\n";
+        std::cout << "New speed: " << currentSpeed << ":" << speedMultiplier << "\n";
         canSpawn = false;
     }
 }
@@ -105,3 +114,10 @@ void ObstacleManager::Draw()
         obstacle->Draw();
     }
 }
+
+// void RegisterPoints(){
+//     if(oneObstacle.position.x > player->position.x){
+//         registerPoint(bool isInGroud)
+//             Inside this function if isInGround
+//     }
+// }

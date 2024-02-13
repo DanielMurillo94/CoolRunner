@@ -27,7 +27,7 @@ private:
     float speedTimer{};
     float speedTimeThreshold{20.f};
     float speedMultiplier{1.5f};
-    float currentSpeed{70}; // Pixels per second
+    float currentSpeed{100.f}; // Pixels per second
 
     float haltTimer{};
     float haltTimeThreshold{3.f};
