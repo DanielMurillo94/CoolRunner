@@ -10,6 +10,8 @@ private:
     Vector2 firstPosition{};
 
 public:
+    bool willScorePoint{true};
+
     Obstacle(Vector2 _position, float _width, float _height, float speed);
     virtual void Update(float deltaTime);
     virtual void Draw();

@@ -98,6 +98,10 @@ void ObstacleManager::Update(float deltaTime)
         {
             player->EvaluateCollision(&(*obstacle));
         }
+        if (obstacle->GetPosition().x <= player->GetPosition().x)
+        {
+            player->IncreasePoints(&(*obstacle));
+        }
     }
     TickTimer(deltaTime);
     PopOffscreenObstacle();

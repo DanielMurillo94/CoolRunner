@@ -117,3 +117,13 @@ void Player::Draw()
         DrawLine(0, i, 1000, i, BLACK);
     }
 }
+
+void Player::IncreasePoints(Obstacle *obstacle)
+{
+    if (!obstacle->willScorePoint || !alive)
+    {
+        return;
+    }
+    currentPoints++;
+    obstacle->willScorePoint = false;
+}

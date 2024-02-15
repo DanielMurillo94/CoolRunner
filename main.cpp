@@ -1,7 +1,7 @@
 #include "raylib.h"
 #include "Player.h"
 #include "ObstacleManager.h"
-// #include "Obstacle.h"
+#include <string>
 
 int main(int argc, char const *argv[])
 {
@@ -26,6 +26,10 @@ int main(int argc, char const *argv[])
 
         player.Draw();
         obstacles.Draw();
+
+        std::string pointsText{"Points: "};
+        pointsText.append(std::to_string(player.GetCurrentPoints()));
+        DrawText(pointsText.c_str(), 100, 100, 100, BLACK);
 
         EndDrawing();
     }

@@ -24,6 +24,7 @@ private:
     Vector2 lastFramePosition{};
 
     bool alive{true};
+    int currentPoints{0};
 
     void FallFaster();
     void Jump();
@@ -36,6 +37,8 @@ public:
     virtual void Draw();
     void Die();
     void EvaluateCollision(Obstacle *obstacle);
+    void IncreasePoints(Obstacle *obstacle);
+    int GetCurrentPoints() { return currentPoints; }
 };
 
 #endif
