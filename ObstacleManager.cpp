@@ -13,6 +13,18 @@ ObstacleManager::ObstacleManager(int groundLevel, int windowWidth, Player *playe
     SetRandomSeed((unsigned int)time(NULL));
 }
 
+void ObstacleManager::FullReset()
+{
+    canSpawn = true;
+    spawnTimer = 0;
+    speedTimer = 0;
+    spawnTimeThreshold = 5;
+    haltTimer = 0;
+    speedMultiplier = 1.5f;
+    currentSpeed = 100.f;
+    obstacles.clear();
+}
+
 void ObstacleManager::SpawnObstacle()
 {
     if (!canSpawn)

@@ -25,6 +25,7 @@ private:
 
     bool alive{true};
     int currentPoints{0};
+    int recordPoints{0};
 
     void FallFaster();
     void Jump();
@@ -36,9 +37,12 @@ public:
     virtual void Update(float deltaTime);
     virtual void Draw();
     void Die();
+    bool IsAlive() { return alive; }
     void EvaluateCollision(Obstacle *obstacle);
     void IncreasePoints(Obstacle *obstacle);
     int GetCurrentPoints() { return currentPoints; }
+    int GetRecord() { return recordPoints; }
+    void FullReset();
 };
 
 #endif

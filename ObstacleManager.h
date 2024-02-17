@@ -42,4 +42,5 @@ public:
     void Update(float deltaTime);
     void Draw();
     float RandomFloat(float min, float max);
+    void FullReset();
 };

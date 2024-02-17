@@ -24,6 +24,14 @@ Player::Player(Vector2 _position, float _jumpHeight, float _jumpTime, int _groun
     Reset();
 }
 
+void Player::FullReset()
+{
+    std::cout << "RESETTING";
+    Reset();
+    alive = true;
+    currentPoints = 0;
+}
+
 void Player::Jump()
 {
     if (canJump)
@@ -73,6 +81,10 @@ void Player::EvaluateCollision(Obstacle *obstacle)
 void Player::Die()
 {
     alive = false;
+    if (currentPoints > recordPoints)
+    {
+        recordPoints = currentPoints;
+    }
 }
 
 void Player::Update(float deltaTime)
